@@ -25,7 +25,7 @@ export default {
     data() {
         return {
             pokemons: [],
-            discoveredList: 0,
+            
         };
     },
     methods: {
@@ -45,13 +45,17 @@ export default {
                 console.error('Error al obtener los Pokémones:', error);
             }
         },
-        increaseCounter() {
-            this.discoveredList++;
-        },
+        
     },
     mounted() {
         this.fetchPokemons();
     },
+    computed: {
+    discoveredList() {
+        return this.pokemons.filter(pokemon => pokemon.discovered).length;
+    }
+}
+
 };
 </script>
 
