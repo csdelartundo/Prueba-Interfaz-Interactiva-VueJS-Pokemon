@@ -2,10 +2,10 @@
     <div class="pokemon-card">
         <img :src="pokemon.image" :class="{ hidden: pokemon.discovered }">
         <div v-if="!pokemon.discovered">
-            <input v-model="guessPokemon" @keyup.enter="checknamePokemon" type="text" placeholder="Adivina el Pokemón">
-            <button @click="checknamePokemon">Descubrir</button>
+            <input v-model="guessPokemon" @keyup.enter="checknamePokemon" class="pokemon-input" type="text" placeholder="Adivina el Pokemón">
+            <button @click="checknamePokemon" class="pokemon-btn">Descubrir</button>
         </div>
-        <p v-else>{{ pokemon.name }}</p>
+        <h3 v-else><strong>{{ pokemon.name }}</strong></h3>
     </div>
 </template>
 
@@ -41,6 +41,26 @@ export default {
     text-align: center;
     background: #FAEF9B;
     color: #0B2F9F;
+}
+
+.pokemon-input {
+    width: 100%;
+    padding: 5px;
+    border: none;
+    font-size: 16px;
+    align-items: center;
+}
+
+.pokemon-btn {
+    background: #0B2F9F;
+    color: #FAEF9B;
+    font-size: 15px;
+    padding: 5px 10px;
+    margin-top: 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+
 }
 
 img {

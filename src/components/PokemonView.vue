@@ -8,7 +8,7 @@
                 v-for="pokemon in pokemons" 
                 :key="pokemon.name" 
                 :pokemon="pokemon"
-                @discovered="increaseCounter" 
+                @discovered="discoveredPokemon" 
             />
         </div>
     </div>
@@ -43,6 +43,12 @@ export default {
                 }));
             } catch (error) {
                 console.error('Error al obtener los Pokémones:', error);
+            }
+        },
+        discoveredPokemon(pokemonName) {
+            const pokemon = this.pokemons.find(p => p.name === pokemonName);
+            if (pokemon) {
+                pokemon.discovered = true;
             }
         },
         
